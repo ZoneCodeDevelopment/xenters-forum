@@ -1,0 +1,3 @@
+--== TOP OF DAILY LOG ==--
+[11:18:58] Server started on port 80
+[11:18:58] Backend started on port 8080

@@ -1,0 +1,62 @@
+.content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    animation: fadeIn 1000ms;
+    display: block;
+}
+
+.content h1 {
+    font-weight: 900;
+    transition: all 500ms;
+}
+
+.content h1:hover {
+    letter-spacing: 10px;
+}
+
+.content p {
+    font-weight: 100;
+    margin-top: -20px;
+}
+.content #selector {
+    padding: 0px;
+    animation: selector 1500ms infinite;
+}
+
+.content a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    opacity: 70%;
+    transition: all 500ms;
+}
+
+.content a:hover {
+    opacity: 100%;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+
+
+
+
+
+@keyframes selector {
+    0% {
+        opacity: 0%;
+    }
+    50% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0%;
+    }
+}

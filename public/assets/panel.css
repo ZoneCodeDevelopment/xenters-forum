@@ -1,0 +1,222 @@
+html {
+    overflow: hidden;
+}
+
+/* The sidebar menu */
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 160px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    transition: color 0.5s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+    
+}
+
+/* Style page content */
+.main {
+    margin-left: 160px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.sidenav > .logo > h1 {
+    color: white;
+    margin-left: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.sidenav > .logo > p {
+    color: white;
+    margin-top: -20px;
+    margin-left: 10px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1.5px;
+}
+
+.sidenav > .links {
+    margin-top: 30vh;
+}
+
+.content {
+    width: 100vw;
+    height: 110vh;
+    background-color: black;
+    position: absolute;
+    top: 0;
+}
+
+.content > h1 {
+    color: white;
+    margin-left: 160px;
+    font-family: 'Roboto', sans-serif;
+}
+
+button {
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    background-color: transparent;
+    fill: none;
+    width: 70px;
+    height: 35px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+#inviteMessage {
+    width: 700px;
+    height: 50px;
+    background-color: red;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 500;
+    text-align: center;
+}
+
+#inviteMessage > a {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    position: absolute;
+    white-space: nowrap;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 7px;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+    z-index: 100;
+  }
+  
+  #overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border: 1px solid white;
+    border-radius: 2px;
+    z-index: 200;
+    background-color: rgb(8, 8, 8);
+    width: 500px;
+    max-width: 80%;
+  }
+  
+  .modal.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+  }
+  
+  .modal-header .title {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+  }
+  
+  
+  .modal-body {
+    padding: 10px 15px;
+  }
+
+  .modal-body > p {
+      color: white;
+      font-family: 'Roboto', sans-serif;
+  }
+
+  .modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding-left: 90%;
+  }
+
+  #send-container {
+      position: absolute;
+      left: 50%;
+      top: 80%;
+      transform: translate(-50%, -50%);
+  }
+  #send-button {
+      position: absolute;
+      top: 80px;
+  }
+
+  #message-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid white;
+    width: 700px;
+    height: 500px;
+  }
+  #message-container > p {
+      color:white;
+      font-family: 'Roboto', sans-serif;
+  }
+
+  #message-input {
+      border: 1px solid white;
+      background-color: transparent;
+      text-align: center;
+      outline: none;
+      color: white;
+      margin-top: 50px;
+  }
+
+  input:focus {
+      outline: none;
+      color: white;
+    border: 1px solid white;
+    background-color: transparent;
+    text-align: center;
+}

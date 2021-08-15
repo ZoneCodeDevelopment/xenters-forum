@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xenters.cc - panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost:8080/?key=8LO4HoysjvVU17DlYSFCXAbFbcZQEHEpc663aELCKJ4vcHBmvk&event=assets&args=panel.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div class="sidenav">
+        <div class="logo">
+            <h1>xenters.cc</h1>
+            <p>your forum to be.</p>
+        </div>
+        <div class="links">
+            
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-tools"></i> Tools</a>
+        <a href="/dashboard" id="admintab" style="color: red"><i class="fas fa-tools"></i> Staff</a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>        
+        <br>
+        <br>
+        <form action="/logout" method="post">
+        <button type="submit">Log Out</button>
+        </form>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Home</h1>
+        <div id="inviteMessage" data-modal-target="#modal">
+            <a>YOU HAVE UNUSED INVITES</a>
+        </div>
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <div class="title">Invite Codes</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+            <div class="modal-body" id="modalbody">
+            </div>
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <div id="message-container"></div>
+    <form id="send-container" action="/sendmessage" method="POST">
+      <input type="text" id="message-input" placeholder="Message" name="messagesent" required>
+      <button type="submit" id="send-button">Send</button>
+    </form>
+    <script>
+        if("<%= userRank %>" !== "admin") {
+    document.getElementById('admintab').remove();
+}
+if("<%= invites %>" !== "true") {
+    document.getElementById('inviteMessage').remove();
+}
+const overlay = document.getElementById('overlay')
+const dataModalOpenButtons = document.querySelectorAll('[data-modal-target]');
+const closeModalButtons = document.querySelectorAll('[data-close-button]');
+dataModalOpenButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = document.querySelector(button.dataset.modalTarget)
+        openModal(modal);
+    })
+})
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = button.closest('.modal')
+    closeModal(modal)
+  })
+})
+overlay.addEventListener('click', () => {
+    const modal = document.querySelectorAll('.modal.active')
+    modal.forEach(modalt => {
+        closeModal(modalt)
+    })
+})
+function openModal(modal) {
+    if(modal == null) return
+    modal.classList.add('active')
+    overlay.classList.add('active')
+}
+function closeModal(modal) {
+    if(modal == null) return
+    modal.classList.remove('active')
+    overlay.classList.remove('active')
+}
+let invitecodess1 = `<%=invitecodes%>`
+let invitecodess2 = invitecodess1.split(",")
+let inviteCounter = parseInt('<%=invitesnum%>')
+for(let i = 0; i < invitecodess2.length; i++) {
+    document.getElementById('modalbody').innerHTML += `<p>Invite: <b>${invitecodess2[i]}</b></p>`;
+}
+let chatMessagess1 = '<%=chatMessages%>'
+let chatMessagess2 = chatMessagess1.split(",")
+for(let i = 0; i < chatMessagess2.length; i++) {
+    document.getElementById('message-container').innerHTML += `<p>${chatMessagess2[i]}</p>`
+}
+    </script>
+</body>
+</html>
